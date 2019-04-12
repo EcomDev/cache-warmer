@@ -1,0 +1,10 @@
+version: '3'
+services:
+  behat:
+    command: tail -F /dev/null
+    build:
+      context: ./
+      dockerfile: Dockerfile-behat
+    volumes:
+      - ./:/opt/project:cached
+    working_dir: /opt/project

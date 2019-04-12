@@ -1,0 +1,7 @@
+FROM php:alpine
+
+RUN docker-php-ext-install pcntl && docker-php-ext-enable pcntl
+RUN apk add --no-cache --update --virtual buildDeps ${PHPIZE_DEPS} \
+ && pecl install xdebug \
+ && docker-php-ext-enable xdebug \
+ && apk del buildDeps
